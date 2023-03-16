@@ -2,34 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:webtoon/models/webtoon_model.dart';
 import 'package:webtoon/screens/api_service.dart';
 
-class MyToons extends StatefulWidget {
-  const MyToons({super.key});
-
-  @override
-  State<MyToons> createState() => _MyToonsState();
-}
-
-class _MyToonsState extends State<MyToons> {
-  List<WebtoonModel> webtoons = [];
-  bool isLoading = true;
-
-  void waitForWebToons() async {
-    webtoons = await ApiService.getTodaysToons();
-    isLoading = false;
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    waitForWebToons();
-  }
-
+class MyToons extends StatelessWidget {
+  MyToons({super.key});
+  Future<List<WebtoonModel>> webtoons = ApiService().getTodaysToons();
   @override
   Widget build(BuildContext context) {
-    print(webtoons);
-    print(isLoading);
+    // print(webtoons);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -40,6 +18,15 @@ class _MyToonsState extends State<MyToons> {
         backgroundColor: Colors.white,
         foregroundColor: Colors.green,
         elevation: 2,
+      ),
+      body: FutureBuilder(
+        future: webtoons, //await 안 붙여도 위젯이 알아서 await 해줌
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const Text("there's data");
+          }
+          return const Text("Loading....");
+        },
       ),
     );
   }
