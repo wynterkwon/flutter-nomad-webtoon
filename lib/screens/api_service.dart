@@ -5,12 +5,12 @@ import 'package:webtoon/models/webtoon_model.dart';
 
 class ApiService {
   static const String baseUrl =
-      "htt1. ps://webtoon-crawler.nomadcoders.workers.dev";
+      "https://webtoon-crawler.nomadcoders.workers.dev";
   static const String today = "today";
 
   static Future<List<WebtoonModel>> getTodaysToons() async {
     List<WebtoonModel> webtoonInstances = [];
-    final url = Uri.parse('$baseUrl/$today');
+    late final url = Uri.parse('$baseUrl/$today');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
