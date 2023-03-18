@@ -23,7 +23,11 @@ class MyToons extends StatelessWidget {
         future: webtoons, //await 안 붙여도 위젯이 알아서 await 해줌
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const Text("there's data");
+            return ListView(
+              children: [
+                for (var webtoon in snapshot.data!) Text(webtoon.title)
+              ],
+            );
           }
           return const Center(
             child: CircularProgressIndicator(),
