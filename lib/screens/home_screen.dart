@@ -4,7 +4,7 @@ import 'package:webtoon/screens/api_service.dart';
 
 class MyToons extends StatelessWidget {
   MyToons({super.key});
-  Future<List<WebtoonModel>> webtoons = ApiService().getTodaysToons();
+  final Future<List<WebtoonModel>> webtoons = ApiService().getTodaysToons();
   @override
   Widget build(BuildContext context) {
     // print(webtoons);
@@ -25,7 +25,9 @@ class MyToons extends StatelessWidget {
           if (snapshot.hasData) {
             return const Text("there's data");
           }
-          return const Text("Loading....");
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
