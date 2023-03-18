@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:webtoon/models/webtoon_model.dart';
 import 'package:webtoon/screens/api_service.dart';
 
@@ -23,10 +24,13 @@ class MyToons extends StatelessWidget {
         future: webtoons, //await 안 붙여도 위젯이 알아서 await 해줌
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return ListView(
-              children: [
-                for (var webtoon in snapshot.data!) Text(webtoon.title)
-              ],
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                var webtoon = snapshot.data![index];
+                return Text(webtoon.title);
+              },
             );
           }
           return const Center(
