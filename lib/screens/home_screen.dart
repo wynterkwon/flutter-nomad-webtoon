@@ -24,7 +24,14 @@ class MyToons extends StatelessWidget {
         future: webtoons, //await 안 붙여도 위젯이 알아서 await 해줌
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return makeList(snapshot);
+            return Column(
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(child: makeList(snapshot))
+              ],
+            );
           }
           return const Center(
             child: CircularProgressIndicator(),
@@ -36,16 +43,16 @@ class MyToons extends StatelessWidget {
 
   ListView makeList(AsyncSnapshot<List<WebtoonModel>> snapshot) {
     return ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: snapshot.data!.length,
-            itemBuilder: (context, index) {
-              print(index);
-              var webtoon = snapshot.data![index];
-              return Text(webtoon.title);
-            },
-            separatorBuilder: (context, index) => const SizedBox(
-              width: 20,
-            ),
-          );
+      scrollDirection: Axis.vertical,
+      itemCount: snapshot.data!.length,
+      itemBuilder: (context, index) {
+        // print(index);
+        var webtoon = snapshot.data![index];
+        return Text(webtoon.title);
+      },
+      separatorBuilder: (context, index) => const SizedBox(
+        width: 20,
+      ),
+    );
   }
 }
