@@ -2,21 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
+import 'package:webtoon/screens/detail_screen.dart';
 
 class Webtoon extends StatelessWidget {
   final String title, thumb, id;
 
-  const Webtoon({super.key,
-  required this.title,
-  required this.thumb,
-  required this.id
-  });
+  const Webtoon(
+      {super.key, required this.title, required this.thumb, required this.id});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        print('take me homeeeee~')
+      onTap: () {
+        // print('take me homeeeee~');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                DetailedScreen(title: title, thumb: thumb, id: id),
+          ),
+        );
       },
       child: Column(
         children: [
