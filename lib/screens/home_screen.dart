@@ -50,31 +50,7 @@ class MyToons extends StatelessWidget {
         // print(index);
         var webtoon = snapshot.data![index];
         print(webtoon.thumb);
-        return Column(
-          children: [
-            Container(
-              width: 250,
-              clipBehavior: Clip.hardEdge,
-              child: Image.network(webtoon.thumb),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 3,
-                        offset: const Offset(10, 10),
-                        color: Colors.black.withOpacity(0.5))
-                  ]),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              webtoon.title,
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
-            ),
-            // Text(webtoon.id)
-          ],
-        );
+        return 
       },
       separatorBuilder: (context, index) => const SizedBox(
         width: 40,
