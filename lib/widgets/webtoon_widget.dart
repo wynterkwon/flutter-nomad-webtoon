@@ -20,6 +20,7 @@ class Webtoon extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) =>
                 DetailedScreen(title: title, thumb: thumb, id: id),
+            fullscreenDialog: true,
           ),
         );
       },
