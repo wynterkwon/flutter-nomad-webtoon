@@ -14,30 +14,35 @@ class Webtoon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 250,
-          clipBehavior: Clip.hardEdge,
-          child: Image.network(thumb),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 3,
-                    offset: const Offset(10, 10),
-                    color: Colors.black.withOpacity(0.5))
-              ]),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          title,
-          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
-        ),
-        // Text(webtoon.id)
-      ],
+    return GestureDetector(
+      onTap: (){
+        print('take me homeeeee~')
+      },
+      child: Column(
+        children: [
+          Container(
+            width: 250,
+            clipBehavior: Clip.hardEdge,
+            child: Image.network(thumb),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 3,
+                      offset: const Offset(10, 10),
+                      color: Colors.black.withOpacity(0.5))
+                ]),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
+          ),
+          // Text(webtoon.id)
+        ],
+      ),
     );
   }
 }
