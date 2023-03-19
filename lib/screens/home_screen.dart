@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:webtoon/models/webtoon_model.dart';
 import 'package:webtoon/screens/api_service.dart';
+import 'package:webtoon/widgets/webtoon_widget.dart';
 
 class MyToons extends StatelessWidget {
   MyToons({super.key});
@@ -50,7 +51,11 @@ class MyToons extends StatelessWidget {
         // print(index);
         var webtoon = snapshot.data![index];
         print(webtoon.thumb);
-        return 
+        return Webtoon(
+          title: webtoon.title,
+          thumb: webtoon.thumb,
+          id: webtoon.id,
+        );
       },
       separatorBuilder: (context, index) => const SizedBox(
         width: 40,

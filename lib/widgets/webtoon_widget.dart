@@ -1,9 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 
 class Webtoon extends StatelessWidget {
-  const Webtoon({super.key});
+  final String title, thumb, id;
+
+  const Webtoon({super.key,
+  required this.title,
+  required this.thumb,
+  required this.id
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +19,7 @@ class Webtoon extends StatelessWidget {
         Container(
           width: 250,
           clipBehavior: Clip.hardEdge,
-          child: Image.network(webtoon.thumb),
+          child: Image.network(thumb),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
@@ -26,7 +33,7 @@ class Webtoon extends StatelessWidget {
           height: 10,
         ),
         Text(
-          webtoon.title,
+          title,
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
         ),
         // Text(webtoon.id)
