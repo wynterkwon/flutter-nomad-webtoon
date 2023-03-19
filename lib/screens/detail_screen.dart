@@ -21,6 +21,18 @@ class DetailedScreen extends StatelessWidget {
         foregroundColor: Colors.green,
         elevation: 2,
       ),
+      body: Container(
+        width: 250,
+        clipBehavior: Clip.hardEdge,
+        child: Image.network(thumb),
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(10), boxShadow: [
+          BoxShadow(
+              blurRadius: 3,
+              offset: const Offset(10, 10),
+              color: Colors.black.withOpacity(0.5))
+        ]),
+      ),
     );
   }
 }
