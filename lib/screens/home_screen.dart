@@ -43,12 +43,19 @@ class MyToons extends StatelessWidget {
 
   ListView makeList(AsyncSnapshot<List<WebtoonModel>> snapshot) {
     return ListView.separated(
-      scrollDirection: Axis.vertical,
+      scrollDirection: Axis.horizontal,
       itemCount: snapshot.data!.length,
       itemBuilder: (context, index) {
         // print(index);
         var webtoon = snapshot.data![index];
-        return Text(webtoon.title);
+        print(webtoon.thumb);
+        return Column(
+          children: [
+            Image.network(webtoon.thumb),
+            Text(webtoon.title),
+            Text(webtoon.id)
+          ],
+        );
       },
       separatorBuilder: (context, index) => const SizedBox(
         width: 20,
