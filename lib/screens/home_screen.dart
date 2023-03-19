@@ -26,8 +26,8 @@ class MyToons extends StatelessWidget {
           if (snapshot.hasData) {
             return Column(
               children: [
-                SizedBox(
-                  height: 10,
+                const SizedBox(
+                  height: 200,
                 ),
                 Expanded(child: makeList(snapshot))
               ],
@@ -51,14 +51,23 @@ class MyToons extends StatelessWidget {
         print(webtoon.thumb);
         return Column(
           children: [
-            Image.network(webtoon.thumb),
-            Text(webtoon.title),
-            Text(webtoon.id)
+            SizedBox(
+              width: 250,
+              child: Image.network(webtoon.thumb),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              webtoon.title,
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
+            ),
+            // Text(webtoon.id)
           ],
         );
       },
       separatorBuilder: (context, index) => const SizedBox(
-        width: 20,
+        width: 40,
       ),
     );
   }
